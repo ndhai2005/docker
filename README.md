@@ -12,3 +12,7 @@
 <pre>
   <code>./build.sh</code>
 </pre>
+<h2>Run</h2>
+<pre>
+  <code>./run.sh</code>
+</pre>
