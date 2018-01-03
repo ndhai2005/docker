@@ -1,8 +1,16 @@
 #!/bin/bash
 
-# Make sure the user data directory is owned by the developer user
-if [ -d /home/developer/.netbeans ]; then
-  chown developer:developer /home/developer/.netbeans
-fi
-ls /usr/local/
-exec /usr/local/netbeans-8.2/bin/netbeans
+IP=$(ifconfig en1 | grep inet | awk '$1=="inet" {print $2}')
+xhost + $IP
+docker run -ti --rm \
+           -e DISPLAY=$IP:0 \
+           -p 65000-65010:65000-65010 \
+           -p 1202:1202 \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -v `pwd`/.netbeans-docker:/home/developer/.netbeans \
+           -v `pwd`:/workspace \
+           -v /zserver:/zserver \
+           -v /data:/data \
+           -v /Volumes:/Volumes \
+           -v `pwd`/nginx/sites-available:/etc/nginx/sites-available \
+           ndhai2005/netbeans-8.2
