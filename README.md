@@ -8,3 +8,7 @@
   <li>Docker 1.13.1+</li>
   <li>An X11 socket</li>
 </ul>
+<h2>Build</h2>
+<pre>
+  <code>./build.sh</code>
+</pre>
