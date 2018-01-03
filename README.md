@@ -1,3 +1,3 @@
 # docker
 
-Netbeans 8.2 + Jdk
+Netbeans 8.2 + oracle-jdk-8
